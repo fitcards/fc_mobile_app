@@ -1,0 +1,21 @@
+import React, { useState, useEffect } from 'react';
+import { TouchableHighlight, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { ICard } from '../../models/card';
+import { Dimensions } from "react-native";
+
+const windowWidth = Dimensions.get('window').width;
+
+export const Card: React.FC<ICard> = ({ title, onPress }) => {
+
+  return (
+    <TouchableOpacity onPress={onPress} style={{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: windowWidth
+    }}>
+     <Text style={{ fontSize: 30 }}>{title}</Text>
+  </TouchableOpacity>
+  );
+}
+
