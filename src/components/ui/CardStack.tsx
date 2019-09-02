@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { ICard } from '../../models/card';
 import { Card } from "./Card"
 
 export interface IProps {
   cards: ICard[];
   handleLastCard: () => void;
+  handleCancel: () => void;
 }
-export const CardStack: React.FC<IProps> = ({ cards, handleLastCard }) => {
+export const CardStack: React.FC<IProps> = ({ cards, handleLastCard, handleCancel }) => {
 
 const [currentCard, setCurrentCard] = useState(0);
 
@@ -25,6 +26,7 @@ const displayCard = () => {
 
   return (
     <View style={{ flex: 1 }}>
+     <TouchableOpacity onPress={handleCancel} style={{ height: 30, margin: 10, width: 60, flexDirection: "row", alignItems: "center"}}><Text>Cancel</Text></TouchableOpacity>
 {displayCard()}
     </View>
   );

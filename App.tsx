@@ -22,7 +22,7 @@ const endWorkout = () => {
   return (
     <SafeAreaView style={styles.container}>
      {workoutList.length > 0 ?
-   <CardStack cards={workoutList} handleLastCard={endWorkout} />
+   <CardStack cards={workoutList} handleLastCard={endWorkout} handleCancel={endWorkout} />
      : 
      <Button title={"Start Workout"} onPress={() => startWorkout()}/>}
     </SafeAreaView>
