@@ -2,19 +2,75 @@ import { ICard } from "../models/card";
 
 export const WORKOUTS: ICard[] = [
   {
+    title: "Bicycle crunches"
+  },
+  {
     title: "Burpees",
+    description: "With pushup?"
   },
   {
-      title: "Mountain Climbers",
+    title: "Butt kickers"
   },
   {
-    title: "Crunches",
-},
-{
-  title: "Lunges",
-},
-{
-  title: "Russian Twist",
-},
-
-]
+    title: "Crunches"
+  },
+  {
+    title: "Half burpees"
+  },
+  {
+    title: "High knees"
+  },
+  {
+    title: "Jumping Jacks"
+  },
+  {
+    title: "Jumping Squats"
+  },
+  {
+    title: "Leg lifts"
+  },
+  {
+    title: "Lunges (forward)"
+  },
+  {
+    title: "Mountain Climbers"
+  },
+  {
+    title: "Plank"
+  },
+  {
+    title: "High Plank"
+  },
+  {
+    title: "Plank with knee tap"
+  },
+  {
+    title: "Plank - side to side"
+  },
+  {
+    title: "Plank Pushups",
+    description: "High to low"
+  },
+  {
+    title: "Pushups"
+  },
+  {
+    title: "Rollers",
+    description: "Equipment needed"
+  },
+  {
+    title: "Situps"
+  },
+  {
+    title: "Squats"
+  },
+  {
+    title: "Superman"
+  },
+  {
+    title: "Mountain Climbers"
+  },
+  {
+    title: "Russian Twist"
+  }
+];
