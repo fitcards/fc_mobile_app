@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableHighlight, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { ICard } from '../../models/card';
+import { Card } from '../../models/card';
 import { Dimensions } from "react-native";
 
 const windowWidth = Dimensions.get('window').width;
 
-export const Card: React.FC<ICard> = ({ title, onPress }) => {
+export const Card: React.FC<Card> = ({ title, onPress }) => {
 
   return (
     <TouchableOpacity onPress={onPress} style={{

@@ -4,7 +4,7 @@ import { Button } from "react-native-elements";
 import { shuffle } from "lodash";
 import { CardStack } from "./src/components/ui/CardStack";
 import { WORKOUTS } from "./src/data/workouts";
-import { ICard } from "./src/models/card";
+import { Card } from "./src/models/card";
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 export default function App() {
   const [activeWorkout, setActiveWorkout] = useState(false);
-  const [workoutList, setWorkoutList] = useState<ICard[]>([]);
+  const [workoutList, setWorkoutList] = useState<Card[]>([]);
   const [currentRep, setCurrentRep] = useState(0);
   const WORKOUT_QTY = 10;
 
