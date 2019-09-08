@@ -15,9 +15,6 @@ const styles = StyleSheet.create({
   }
 });
 
-// workout states: no workout, active workout
-// rep 0, rep 1 (first workout), rep n
-
 export default function App() {
   const [activeWorkout, setActiveWorkout] = useState(false);
   const [workoutList, setWorkoutList] = useState<ICard[]>([]);
