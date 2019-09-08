@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { Button } from "react-native-elements";
+import { Button } from "react-native";
 import { shuffle } from "lodash";
 import { CardStack } from "./src/components/ui/CardStack";
 import { WORKOUTS } from "./src/data/workouts";
