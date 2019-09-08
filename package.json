@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "tsindex": "cti clean ./src && cti create ./src"
   },
   "dependencies": {
     "expo": "^34.0.1",
@@ -13,7 +14,6 @@
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-elements": "^1.1.0",
     "react-native-web": "^0.11.4"
   },
   "devDependencies": {
@@ -22,6 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
     "babel-preset-expo": "^6.0.0",
+    "create-ts-index": "^1.10.3",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.2.0",
