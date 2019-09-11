@@ -3,81 +3,112 @@ import { Card } from "../models/card";
 export enum EWorkoutType {
   BURPEE = "BURPEE",
   CRUNCH = "CRUNCH",
+  MOUNTAIN_CLIMBER = "MOUNTAIN_CLIMBER",
+  LUNGE = "LUNGE",
+  PUSHUP = "PUSHUP",
+  PLANK = "PLANK",
   SQUAT = "SQUAT",
   OTHER = "OTHER"
 }
 
-export const WORKOUTS: Card[] = [
+interface Workout extends Card {
+  type: EWorkoutType;
+}
+
+export const WORKOUTS: Workout[] = [
   {
-    title: "Bicycle crunches"
+    title: "Bicycle crunches",
+    type: EWorkoutType.CRUNCH
   },
   {
     title: "Burpees",
-    description: "With pushup?"
+    description: "With pushup?",
+    type: EWorkoutType.PUSHUP
   },
   {
-    title: "Butt kickers"
+    title: "Butt kickers",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Crunches"
+    title: "Crunches",
+    type: EWorkoutType.CRUNCH
   },
   {
-    title: "Half burpees"
+    title: "Half burpees",
+    type: EWorkoutType.BURPEE
   },
   {
-    title: "High knees"
+    title: "High knees",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Jumping Jacks"
+    title: "Jumping Jacks",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Jumping Squats"
+    title: "Jumping Squats",
+    type: EWorkoutType.SQUAT
   },
   {
-    title: "Leg lifts"
+    title: "Leg lifts",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Lunges (forward)"
+    title: "Lunges (forward)",
+    type: EWorkoutType.LUNGE
   },
   {
-    title: "Mountain Climbers"
+    title: "Mountain Climbers",
+    type: EWorkoutType.MOUNTAIN_CLIMBER
   },
   {
-    title: "Plank"
+    title: "Plank",
+    type: EWorkoutType.PLANK
   },
   {
-    title: "High Plank"
+    title: "High Plank",
+    type: EWorkoutType.PLANK
   },
   {
-    title: "Plank with knee tap"
+    title: "Plank with knee tap",
+    type: EWorkoutType.PLANK
   },
   {
-    title: "Plank - side to side"
+    title: "Plank - side to side",
+    type: EWorkoutType.PLANK
   },
   {
     title: "Plank Pushups",
-    description: "High to low"
+    description: "High to low",
+    type: EWorkoutType.PLANK
   },
   {
-    title: "Pushups"
+    title: "Pushups",
+    type: EWorkoutType.PUSHUP
   },
   {
     title: "Rollers",
-    description: "Equipment needed"
+    description: "Equipment needed",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Situps"
+    title: "Situps",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Squats"
+    title: "Squats",
+    type: EWorkoutType.SQUAT
   },
   {
-    title: "Superman"
+    title: "Superman",
+    type: EWorkoutType.OTHER
   },
   {
-    title: "Mountain Climbers"
+    title: "Mountain Climbers",
+    type: EWorkoutType.MOUNTAIN_CLIMBER
   },
   {
-    title: "Russian Twist"
+    title: "Russian Twist",
+    type: EWorkoutType.OTHER
   }
 ];
