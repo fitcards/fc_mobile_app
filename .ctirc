@@ -1,0 +1,28 @@
+// created from 'create-ts-index'
+
+{
+  addNewline: true,
+  excludes: [
+    'dist',
+    'bin',
+    'node_modules',
+    'tmp'
+    '.expo'
+    '.expo-shared',
+    'assets'
+  ],
+  fileExcludePatterns: [".test."],
+  fileFirst: true,
+  globOptions: {
+    dot: false,
+    nonull: true,
+  },
+  includeCWD: true,
+  targetExts: [
+    'ts',
+    'tsx',
+  ],
+  useSemicolon: true,
+  useTimestamp: false,
+  verbose: false,
+}
