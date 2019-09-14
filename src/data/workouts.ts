@@ -1,6 +1,13 @@
-import { ICard } from "../models/card";
+import { Card } from "../models/card";
 
-export const WORKOUTS: ICard[] = [
+export enum EWorkoutType {
+  BURPEE = "BURPEE",
+  CRUNCH = "CRUNCH",
+  SQUAT = "SQUAT",
+  OTHER = "OTHER"
+}
+
+export const WORKOUTS: Card[] = [
   {
     title: "Bicycle crunches"
   },

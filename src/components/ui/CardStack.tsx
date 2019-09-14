@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { ICard } from "../../models/card";
+import { Card } from "../../models/card";
 import { Card } from "./Card";
 
 export interface Props {
-  cards: ICard[];
+  cards: Card[];
   handleLastCard: () => void;
   handleCancel: () => void;
 }
