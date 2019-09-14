@@ -15,30 +15,53 @@ const styles = StyleSheet.create({
   }
 });
 
+// workout states: no workout, active workout
+// rep 0, rep 1 (first workout), rep n
+
 export default function App() {
+  const [activeWorkout, setActiveWorkout] = useState(false);
   const [workoutList, setWorkoutList] = useState<ICard[]>([]);
+  const [currentRep, setCurrentRep] = useState(0);
   const WORKOUT_QTY = 10;
 
   const startWorkout = () => {
     const shuffled = shuffle(WORKOUTS);
     const list = shuffled.slice(0, WORKOUT_QTY);
     setWorkoutList(list);
+    setCurrentRep(currentRep + 1);
+    setActiveWorkout(true);
   };
 
   const endWorkout = () => {
+    setActiveWorkout(false);
     setWorkoutList([]);
+  };
+
+  const endRep = () => {
+    setCurrentRep(currentRep + 1);
+    setActiveWorkout(false);
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      {workoutList.length > 0 ? (
+      {activeWorkout ? (
         <CardStack
           cards={workoutList}
-          handleLastCard={endWorkout}
+          handleLastCard={endRep}
           handleCancel={endWorkout}
         />
-      ) : (
+      ) : workoutList.length === 0 ? (
         <Button title={"Start Workout"} onPress={() => startWorkout()} />
+      ) : (
+        <>
+          <Button
+            title={"Another Rep"}
+            onPress={() => {
+              setActiveWorkout(true);
+            }}
+          />
+          <Button title={"End Workout"} onPress={() => endWorkout()} />
+        </>
       )}
     </SafeAreaView>
   );
