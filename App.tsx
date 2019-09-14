@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native-elements";
 import { shuffle } from "lodash";
 import { CardStack } from "./src/components/ui/CardStack";
@@ -34,6 +34,7 @@ export default function App() {
 
   const endWorkout = () => {
     setActiveWorkout(false);
+    setCurrentRep(0);
     setWorkoutList([]);
   };
 
@@ -45,11 +46,14 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {activeWorkout ? (
-        <CardStack
-          cards={workoutList}
-          handleLastCard={endRep}
-          handleCancel={endWorkout}
-        />
+        <View>
+          <Text>Current Rep: {currentRep}</Text>
+          <CardStack
+            cards={workoutList}
+            handleLastCard={endRep}
+            handleCancel={endWorkout}
+          />
+        </View>
       ) : workoutList.length === 0 ? (
         <Button title={"Start Workout"} onPress={() => startWorkout()} />
       ) : (
