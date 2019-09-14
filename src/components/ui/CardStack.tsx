@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity } from "react-native";
 import { Card } from "../../models/card";
-import { Card } from "./Card";
+import { CardButton } from "./CardButton";
 
 export interface Props {
   cards: Card[];
@@ -25,7 +25,7 @@ export const CardStack: React.FC<Props> = ({
 
   const displayCard = () => {
     return cards[currentCard] ? (
-      <Card title={cards[currentCard].title} onPress={handlePress} />
+      <CardButton title={cards[currentCard].title} onPress={handlePress} />
     ) : null;
   };
 
