@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native";
 import { shuffle } from "lodash";
 import { CardStack } from "./src/components/ui/CardStack";
-import { WORKOUTS, EWorkoutType } from "./src/data/workouts";
+import {
+  EWorkoutType,
+  TYPED_WORKOUTS,
+  OTHER_WORKOUTS
+} from "./src/data/workouts";
 import { Card } from "./src/models/card";
 
 const styles = StyleSheet.create({
@@ -15,31 +19,37 @@ const styles = StyleSheet.create({
   }
 });
 
-const useWorkoutSet = function() {
-  const [workoutList, setWorkoutList] = useState<Card[]>([]);
-  // -  get 1 of each type + all other types
-  return {
-    workoutList
-  };
-};
-
 export default function App() {
   const [activeWorkout, setActiveWorkout] = useState(false);
   const [workoutList, setWorkoutList] = useState<Card[]>([]);
   const [currentRep, setCurrentRep] = useState(0);
   const WORKOUT_QTY = 10;
 
-  const getWorkoutTypes = () => {
-    const names: string[] = [];
+  const getWorkoutTypes = (): string[] => {
+    const types: string[] = [];
     for (const n in EWorkoutType) {
-      if (typeof EWorkoutType[n] === "string") names.push(n);
+      if (typeof EWorkoutType[n] === "string") types.push(n);
     }
-    console.log(names); // ['Red', 'Green', 'Blue', '10']
-    return names;
+    return types;
+  };
+
+  const getNoDupeWorkouts = () => {
+    const types: string[] = getWorkoutTypes();
+    const list = [...OTHER_WORKOUTS];
+
+    types.forEach(t => {
+      if (TYPED_WORKOUTS[t]) {
+        const index = Math.floor(Math.random() * TYPED_WORKOUTS[t].length);
+        list.push(TYPED_WORKOUTS[t][index]);
+      }
+    });
+
+    return list;
   };
 
   const startWorkout = () => {
-    const shuffled = shuffle(WORKOUTS);
+    const noDupeWorkouts = getNoDupeWorkouts();
+    const shuffled = shuffle(noDupeWorkouts);
     const list = shuffled.slice(0, WORKOUT_QTY);
     setWorkoutList(list);
     setCurrentRep(currentRep + 1);
@@ -59,21 +69,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ padding: 10, backgroundColor: "yellow" }}>
-        <Text>adsada</Text>
-      </View>
-      <View style={{ flex: 1, backgroundColor: "black", minHeight: 200 }}>
-        {getWorkoutTypes() &&
-          getWorkoutTypes().map((wt, index) => (
-            <View
-              key={index.toString()}
-              style={{ padding: 10, backgroundColor: "yellow" }}
-            >
-              <Text>{wt}</Text>
-            </View>
-          ))}
-      </View>
-      {/* {activeWorkout ? (
+      {activeWorkout ? (
         <View>
           <Text>Current Rep: {currentRep}</Text>
           <CardStack
@@ -96,7 +92,22 @@ export default function App() {
           />
           <Button title={"End Workout"} onPress={() => endWorkout()} />
         </>
-      )} */}
+      )}
     </SafeAreaView>
   );
 }
+
+// <View style={{ padding: 10, backgroundColor: "yellow" }}>
+// {/* <Text>adsada</Text> */}
+// </View>
+// <View style={{ flex: 1, backgroundColor: "black", minHeight: 200 }}>
+// {getWorkoutTypes() &&
+//   getWorkoutTypes().map((wt, index) => (
+//     <View
+//       key={index.toString()}
+//       style={{ padding: 10, backgroundColor: "yellow" }}
+//     >
+//       <Text>{wt}</Text>
+//     </View>
+//   ))}
+// </View>
