@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native";
 import { shuffle } from "lodash";
@@ -11,7 +11,6 @@ import {
   OTHER_WORKOUTS,
   Workout
 } from "./src/data/workouts";
-import { Card } from "./src/models/card";
 
 const styles = StyleSheet.create({
   container: {
