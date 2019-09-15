@@ -1,11 +1,16 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { Dimensions } from "react-native";
-import { Card } from "../../models/card";
 
 const windowWidth = Dimensions.get("window").width;
 
-export const CardButton: React.FC<Card> = ({ title, onPress }) => {
+interface Props {
+  title: string;
+  subTitle?: string;
+  onPress: () => void;
+}
+
+export const CardButton: React.FC<Props> = ({ title, subTitle, onPress }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -16,7 +21,8 @@ export const CardButton: React.FC<Card> = ({ title, onPress }) => {
         width: windowWidth
       }}
     >
-      <Text style={{ fontSize: 30 }}>{title}</Text>
+      <Text style={{ fontSize: 30, fontWeight: "bold" }}>{title}</Text>
+      {subTitle && <Text style={{ fontSize: 20 }}>{subTitle}</Text>}
     </TouchableOpacity>
   );
 };

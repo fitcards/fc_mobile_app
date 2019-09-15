@@ -25,7 +25,11 @@ export const CardStack: React.FC<Props> = ({
 
   const displayCard = () => {
     return cards[currentCard] ? (
-      <CardButton title={cards[currentCard].title} onPress={handlePress} />
+      <CardButton
+        title={cards[currentCard].title}
+        subTitle={cards[currentCard].subTitle}
+        onPress={handlePress}
+      />
     ) : null;
   };
 

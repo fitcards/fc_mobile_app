@@ -6,7 +6,8 @@ import { CardStack } from "./src/components/ui/CardStack";
 import {
   EWorkoutType,
   TYPED_WORKOUTS,
-  OTHER_WORKOUTS
+  OTHER_WORKOUTS,
+  Workout
 } from "./src/data/workouts";
 import { Card } from "./src/models/card";
 
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
 
 export default function App() {
   const [activeWorkout, setActiveWorkout] = useState(false);
-  const [workoutList, setWorkoutList] = useState<Card[]>([]);
+  const [workoutList, setWorkoutList] = useState<Workout[]>([]);
   const [currentRep, setCurrentRep] = useState(0);
   const WORKOUT_QTY = 10;
 
@@ -73,7 +74,10 @@ export default function App() {
         <View>
           <Text>Current Rep: {currentRep}</Text>
           <CardStack
-            cards={workoutList}
+            cards={workoutList.map(wkout => ({
+              ...wkout,
+              subTitle: wkout.reps ? `Reps: ${wkout.reps}` : undefined
+            }))}
             handleLastCard={endRep}
             handleCancel={endWorkout}
           />
@@ -96,18 +100,3 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-// <View style={{ padding: 10, backgroundColor: "yellow" }}>
-// {/* <Text>adsada</Text> */}
-// </View>
-// <View style={{ flex: 1, backgroundColor: "black", minHeight: 200 }}>
-// {getWorkoutTypes() &&
-//   getWorkoutTypes().map((wt, index) => (
-//     <View
-//       key={index.toString()}
-//       style={{ padding: 10, backgroundColor: "yellow" }}
-//     >
-//       <Text>{wt}</Text>
-//     </View>
-//   ))}
-// </View>
