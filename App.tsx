@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  const [shuffling, setShuffling] = useState(false);
   const [activeWorkout, setActiveWorkout] = useState(false);
   const [workoutList, setWorkoutList] = useState<Workout[]>([]);
   const [currentRep, setCurrentRep] = useState(0);
@@ -49,7 +50,7 @@ export default function App() {
     return list;
   };
 
-  const startWorkout = () => {
+  const workoutInit = () => {
     const noDupeWorkouts = getNoDupeWorkouts();
     const shuffled = shuffle(noDupeWorkouts);
     const list = shuffled.slice(0, WORKOUT_QTY);
@@ -57,6 +58,14 @@ export default function App() {
     setCurrentRep(currentRep + 1);
     setActiveWorkout(true);
     activateKeepAwake();
+  };
+
+  const startWorkout = () => {
+    setShuffling(true);
+    setTimeout(() => {
+      setShuffling(false);
+      workoutInit();
+    }, 1500);
   };
 
   const endWorkout = () => {
@@ -87,7 +96,13 @@ export default function App() {
         </View>
       ) : workoutList.length === 0 ? (
         <View>
-          <Button title={"Start Workout"} onPress={() => startWorkout()} />
+          {shuffling ? (
+            <View>
+              <Text>Shuffling cards...</Text>
+            </View>
+          ) : (
+            <Button title={"Start Workout"} onPress={() => startWorkout()} />
+          )}
         </View>
       ) : (
         <>
