@@ -3,6 +3,8 @@ import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native";
 import { shuffle } from "lodash";
 import { CardStack } from "./src/components/ui/CardStack";
+import { activateKeepAwake, deactivateKeepAwake } from "expo-keep-awake";
+
 import {
   EWorkoutType,
   TYPED_WORKOUTS,
@@ -55,12 +57,14 @@ export default function App() {
     setWorkoutList(list);
     setCurrentRep(currentRep + 1);
     setActiveWorkout(true);
+    activateKeepAwake();
   };
 
   const endWorkout = () => {
     setActiveWorkout(false);
     setCurrentRep(0);
     setWorkoutList([]);
+    deactivateKeepAwake();
   };
 
   const endRep = () => {
