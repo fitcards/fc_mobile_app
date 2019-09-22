@@ -25,6 +25,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Add shuffle message\nAdd FitCards launch message"
   }
 }
