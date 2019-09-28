@@ -11,6 +11,7 @@ import {
   OTHER_WORKOUTS,
   Workout
 } from "./src/data/workouts";
+import { useStopwatch } from "./src/hooks/useStopwatch";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,13 @@ export default function App() {
   const [workoutList, setWorkoutList] = useState<Workout[]>([]);
   const [currentRep, setCurrentRep] = useState(0);
   const WORKOUT_QTY = 10;
+
+  const {
+    startTimer,
+    resetTimer,
+    elapsedTime
+    // stopwatchIsRunning
+  } = useStopwatch();
 
   const getWorkoutTypes = (): string[] => {
     const types: string[] = [];
@@ -58,6 +66,7 @@ export default function App() {
     setCurrentRep(currentRep + 1);
     setActiveWorkout(true);
     activateKeepAwake();
+    startTimer();
   };
 
   const startWorkout = () => {
@@ -73,6 +82,7 @@ export default function App() {
     setCurrentRep(0);
     setWorkoutList([]);
     deactivateKeepAwake();
+    resetTimer();
   };
 
   const endRep = () => {
@@ -85,6 +95,7 @@ export default function App() {
       {activeWorkout ? (
         <View>
           <Text>Current Rep: {currentRep}</Text>
+          <Text>{elapsedTime}</Text>
           <CardStack
             cards={workoutList.map(wkout => ({
               ...wkout,
