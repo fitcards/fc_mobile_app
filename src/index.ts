@@ -3,6 +3,7 @@
  */
 
 export * from "./components/AppContainer/AppContainer";
+export * from "./components/providers/WorkoutProvider";
 export * from "./components/ui/CardButton";
 export * from "./components/ui/CardStack";
 export * from "./components/ui/Screen";
@@ -10,7 +11,10 @@ export * from "./constants/routes";
 export * from "./data/workouts";
 export * from "./hooks/useStopwatch";
 export * from "./hooks/useTimer";
+export * from "./hooks/useWorkoutList";
 export * from "./models/card";
 export * from "./models/navigation";
+export * from "./models/workout";
+export * from "./screens/ActiveWorkout/ActiveWorkoutScreen";
 export * from "./screens/Home/HomeScreen";
 export * from "./screens/NewWorkout/NewWorkoutScreen";

@@ -9,7 +9,7 @@ const persistNavigationState = async navState => {
   try {
     await AsyncStorage.setItem(persistenceKey, JSON.stringify(navState));
   } catch (err) {
-    // handle the error according to your needs
+    console.log("err: ", err);
   }
 };
 const loadNavigationState = async () => {
@@ -25,16 +25,6 @@ function getPersistenceFunctions() {
       }
     : undefined;
 }
-
-// interface WorkoutContextProps {
-//   activeWorkout: boolean;
-//   setActiveWorkout: (isActive: boolean) => void;
-// }
-
-// const WorkoutContext = React.createContext<WorkoutContextProps>({
-//   activeWorkout: false,
-//   setActiveWorkout: () => null
-// });
 
 const App: React.FC = () => {
   return (
