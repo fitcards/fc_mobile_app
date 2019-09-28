@@ -2,12 +2,12 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { AppRoutes } from "../../constants/routes";
 import { HomeScreen } from "../../screens/Home/HomeScreen";
-import { DetailsScreen } from "../../screens/Details/DetailsScreen";
+import { NewWorkoutScreen } from "../../screens/NewWorkout/NewWorkoutScreen";
 
 const AppNavigator = createStackNavigator(
   {
     [AppRoutes.HOME]: HomeScreen,
-    [AppRoutes.DETAILS]: DetailsScreen
+    [AppRoutes.NEW_WORKOUT]: NewWorkoutScreen
   },
   {
     initialRouteName: AppRoutes.HOME

@@ -3,12 +3,13 @@ import React from "react";
 // import { NavProps } from "../../models";
 import { Button, View } from "react-native";
 import { AppRoutes } from "../../constants/routes";
+import { NavProps } from "../../models/navigation";
 
 export const HomeScreen: React.FC<NavProps> = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
-        onPress={() => navigation.navigate(AppRoutes.DETAILS)}
+        onPress={() => navigation.navigate(AppRoutes.NEW_WORKOUT)}
         title="New Workout"
       />
     </View>
