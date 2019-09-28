@@ -6,10 +6,7 @@ import { WorkoutContext } from "../../components/providers/WorkoutProvider";
 import { AppRoutes } from "../../constants/routes";
 
 export const NewWorkoutScreen: React.FC<NavProps> = ({ navigation }) => {
-  const { activeWorkout, startWorkout, workoutList } = useContext(
-    WorkoutContext
-  );
-  console.log("workoutList: ", workoutList);
+  const { activeWorkout, startWorkout } = useContext(WorkoutContext);
 
   useEffect(() => {
     if (activeWorkout) {
