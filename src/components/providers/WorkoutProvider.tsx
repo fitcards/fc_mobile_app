@@ -4,19 +4,26 @@ import { useWorkoutList } from "../../hooks/useWorkoutList";
 
 interface WorkoutContextProps {
   activeWorkout: boolean;
+  currentRep: number;
   workoutList: Workout[];
-  setActiveWorkout: (isActive: boolean) => void;
+  startWorkout: () => void;
+  endWorkout: () => void;
+  handleRepCompleted: () => void;
 }
 
 export const WorkoutContext = React.createContext<WorkoutContextProps>({
   activeWorkout: false,
-  setActiveWorkout: () => null,
-  workoutList: []
+  handleRepCompleted: () => null,
+  startWorkout: () => null,
+  endWorkout: () => null,
+  workoutList: [],
+  currentRep: 0
 });
 
 export const WorkoutProvider: React.FC = ({ children }) => {
   const [activeWorkout, setActiveWorkout] = useState(false);
   const { workoutList, newWorkoutList } = useWorkoutList();
+  const [currentRep, setCurrentRep] = useState(0);
 
   useEffect(() => {
     if (activeWorkout) {
@@ -24,11 +31,28 @@ export const WorkoutProvider: React.FC = ({ children }) => {
     }
   }, [activeWorkout]);
 
+  const startWorkout = () => {
+    setCurrentRep(currentRep + 1);
+    setActiveWorkout(true);
+  };
+
+  const endWorkout = () => {
+    setCurrentRep(0);
+    setActiveWorkout(false);
+  };
+
+  const handleRepCompleted = () => {
+    setCurrentRep(currentRep + 1);
+  };
+
   return (
     <WorkoutContext.Provider
       value={{
         activeWorkout,
-        setActiveWorkout,
+        currentRep,
+        handleRepCompleted,
+        startWorkout,
+        endWorkout,
         workoutList
       }}
     >

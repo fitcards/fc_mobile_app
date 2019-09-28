@@ -1,24 +1,4 @@
-import { EWorkoutType } from "../models/workout";
-
-// export enum EWorkoutType {
-//   BURPEE = "BURPEE",
-//   CRUNCH = "CRUNCH",
-//   MOUNTAIN_CLIMBER = "MOUNTAIN_CLIMBER",
-//   LUNGE = "LUNGE",
-//   PUSHUP = "PUSHUP",
-//   PLANK = "PLANK",
-//   SQUAT = "SQUAT",
-//   OTHER = "OTHER"
-// }
-
-// export interface Workout extends Card {
-//   type: EWorkoutType;
-//   reps?: number;
-// }
-
-// interface WorkoutCollection {
-//   [key: string]: Workout[]
-// }
+import { EWorkoutType, WorkoutCollection, Workout } from "../models/workout";
 
 export const TYPED_WORKOUTS: WorkoutCollection = {
   [EWorkoutType.BURPEE]: [

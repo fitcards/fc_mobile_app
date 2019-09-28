@@ -6,7 +6,7 @@ import { WorkoutContext } from "../../components/providers/WorkoutProvider";
 import { AppRoutes } from "../../constants/routes";
 
 export const NewWorkoutScreen: React.FC<NavProps> = ({ navigation }) => {
-  const { activeWorkout, setActiveWorkout, workoutList } = useContext(
+  const { activeWorkout, startWorkout, workoutList } = useContext(
     WorkoutContext
   );
   console.log("workoutList: ", workoutList);
@@ -18,7 +18,7 @@ export const NewWorkoutScreen: React.FC<NavProps> = ({ navigation }) => {
   }, [activeWorkout]);
   return (
     <Screen>
-      <Button title="Start Workout" onPress={() => setActiveWorkout(true)} />
+      <Button title="Start Workout" onPress={() => startWorkout()} />
       <Text>Settings: Ensure variety, number of workouts, recommend reps</Text>
     </Screen>
   );
