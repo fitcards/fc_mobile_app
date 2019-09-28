@@ -6,16 +6,22 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "tsindex": "cti clean ./src && cti create ./src"
+    "tsindex": "cti clean ./src",
+    "barrels": "barrelsby --delete --directory src"
   },
   "dependencies": {
     "expo": "^34.0.1",
     "expo-keep-awake": "~6.0.0",
     "lodash": "^4.17.15",
+    "module-alias": "^2.2.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-web": "^0.11.4"
+    "react-native-gesture-handler": "~1.3.0",
+    "react-native-reanimated": "~1.1.0",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^1.9.1"
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
@@ -23,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
     "babel-preset-expo": "^6.0.0",
+    "barrelsby": "^2.1.1",
     "create-ts-index": "^1.10.3",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",

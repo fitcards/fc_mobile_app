@@ -17,7 +17,7 @@
     dot: false,
     nonull: true,
   },
-  includeCWD: true,
+   includeCWD: true,
   targetExts: [
     'ts',
     'tsx',
@@ -25,4 +25,5 @@
   useSemicolon: true,
   useTimestamp: false,
   verbose: false,
+  quote: '"',
 }
