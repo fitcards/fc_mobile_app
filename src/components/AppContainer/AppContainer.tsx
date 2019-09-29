@@ -8,7 +8,10 @@ import { WorkoutSettingsScreen } from "../../screens/WorkoutSettings/WorkoutSett
 const AppStack = createStackNavigator(
   {
     [AppRoutes.HOME]: {
-      screen: HomeScreen
+      screen: HomeScreen,
+      navigationOptions: () => ({
+        title: "FitCards"
+      })
     },
     [AppRoutes.WORKOUT_SETTINGS]: {
       screen: WorkoutSettingsScreen,

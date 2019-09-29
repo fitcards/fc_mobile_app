@@ -5,7 +5,7 @@ import { NavProps } from "../../models/navigation";
 import { WorkoutContext } from "../../providers/WorkoutProvider";
 import { MainActionButton } from "../../components/ui/MainActionButton/MainActionButton";
 import { Screen } from "../../components/ui/Screen";
-import { HeadingText } from "../../components/ui/Heading/HeadingText";
+// import { HeadingText } from "../../components/ui/Heading/HeadingText";
 import { TextBlock } from "../../components/ui/TextBlock/TextBlock";
 
 export const HomeScreen: React.FC<NavProps> = ({ navigation }) => {
@@ -19,9 +19,9 @@ export const HomeScreen: React.FC<NavProps> = ({ navigation }) => {
   return (
     <Screen>
       <View style={{ flex: 1 }}>
-        <View>
+        {/* <View>
           <HeadingText>Welcome Back</HeadingText>
-        </View>
+        </View> */}
         <TextBlock>Tap start for a new randomized HIIT workout.</TextBlock>
         {/* <Button onPress={() => startWorkout()} title="Start Workout" /> */}
         {/* <View style={{ marginTop: 20 }}>
