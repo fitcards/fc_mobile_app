@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import { Button, View } from "react-native";
+import { View } from "react-native";
 import { AppRoutes } from "../../constants/routes";
 import { NavProps } from "../../models/navigation";
 import { WorkoutContext } from "../../providers/WorkoutProvider";
-import { EvilIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { MainActionButton } from "../../components/ui/MainActionButton/MainActionButton";
 import { Screen } from "../../components/ui/Screen";
+import { HeadingText } from "../../components/ui/Heading/HeadingText";
+import { TextBlock } from "../../components/ui/TextBlock/TextBlock";
 
 export const HomeScreen: React.FC<NavProps> = ({ navigation }) => {
   const { activeWorkout, startWorkout } = useContext(WorkoutContext);
@@ -19,6 +19,10 @@ export const HomeScreen: React.FC<NavProps> = ({ navigation }) => {
   return (
     <Screen>
       <View style={{ flex: 1 }}>
+        <View>
+          <HeadingText>Welcome Back</HeadingText>
+        </View>
+        <TextBlock>Tap start for a new randomized HIIT workout.</TextBlock>
         {/* <Button onPress={() => startWorkout()} title="Start Workout" /> */}
         {/* <View style={{ marginTop: 20 }}>
         <TouchableOpacity

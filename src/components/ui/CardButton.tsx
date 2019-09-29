@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { Dimensions } from "react-native";
+import { HeadingText } from "./Heading/HeadingText";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -21,7 +22,7 @@ export const CardButton: React.FC<Props> = ({ title, subTitle, onPress }) => {
         width: windowWidth
       }}
     >
-      <Text style={{ fontSize: 30, fontWeight: "bold" }}>{title}</Text>
+      <HeadingText>{title}</HeadingText>
       {subTitle && <Text style={{ fontSize: 20 }}>{subTitle}</Text>}
     </TouchableOpacity>
   );
