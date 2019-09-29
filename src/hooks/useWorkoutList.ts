@@ -5,6 +5,7 @@ import { shuffle } from "lodash";
 
 interface WorkoutListParams {
   newWorkoutList: () => void;
+  resetWorkoutList: () => void;
   workoutList: Workout[];
 }
 
@@ -44,8 +45,13 @@ export const useWorkoutList: WorkoutListHook = (
     setWorkoutList(list);
   };
 
+  const resetWorkoutList = () => {
+    setWorkoutList([]);
+  };
+
   return {
     newWorkoutList,
-    workoutList
+    workoutList,
+    resetWorkoutList
   };
 };

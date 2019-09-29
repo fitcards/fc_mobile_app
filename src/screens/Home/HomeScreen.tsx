@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from "react";
-// import { AppRoutes } from "../../constants";
-// import { NavProps } from "../../models";
 import { Button, View } from "react-native";
 import { AppRoutes } from "../../constants/routes";
 import { NavProps } from "../../models/navigation";
-import { WorkoutContext } from "../../components/providers/WorkoutProvider";
+import { WorkoutContext } from "../../providers/WorkoutProvider";
 
 export const HomeScreen: React.FC<NavProps> = ({ navigation }) => {
   const { activeWorkout, startWorkout } = useContext(WorkoutContext);

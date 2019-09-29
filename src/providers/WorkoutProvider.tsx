@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Workout } from "../../models/workout";
-import { useWorkoutList } from "../../hooks/useWorkoutList";
+import React, { useState } from "react";
+import { useWorkoutList } from "../hooks/useWorkoutList";
+import { Workout } from "../models/workout";
 
 interface WorkoutContextProps {
   activeWorkout: boolean;
+  setActiveWorkout: (isActive: boolean) => void;
   currentRep: number;
+  setCurrentRep: (count: number) => void;
   workoutList: Workout[];
   startWorkout: () => void;
   endWorkout: () => void;
-  handleRepCompleted: () => void;
 }
 
 export const WorkoutContext = React.createContext<WorkoutContextProps>({
   activeWorkout: false,
-  handleRepCompleted: () => null,
+  setActiveWorkout: () => null,
+  setCurrentRep: () => null,
   startWorkout: () => null,
   endWorkout: () => null,
   workoutList: [],
@@ -22,27 +24,19 @@ export const WorkoutContext = React.createContext<WorkoutContextProps>({
 
 export const WorkoutProvider: React.FC = ({ children }) => {
   const [activeWorkout, setActiveWorkout] = useState(false);
-  const { workoutList, newWorkoutList } = useWorkoutList();
+  const { workoutList, newWorkoutList, resetWorkoutList } = useWorkoutList();
   const [currentRep, setCurrentRep] = useState(0);
 
-  useEffect(() => {
-    if (activeWorkout) {
-      newWorkoutList();
-    }
-  }, [activeWorkout]);
-
   const startWorkout = () => {
+    newWorkoutList();
     setCurrentRep(currentRep + 1);
     setActiveWorkout(true);
   };
 
   const endWorkout = () => {
     setCurrentRep(0);
+    resetWorkoutList();
     setActiveWorkout(false);
-  };
-
-  const handleRepCompleted = () => {
-    setCurrentRep(currentRep + 1);
   };
 
   return (
@@ -50,10 +44,11 @@ export const WorkoutProvider: React.FC = ({ children }) => {
       value={{
         activeWorkout,
         currentRep,
-        handleRepCompleted,
         startWorkout,
         endWorkout,
-        workoutList
+        workoutList,
+        setActiveWorkout,
+        setCurrentRep
       }}
     >
       {children}

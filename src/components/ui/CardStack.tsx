@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { Card } from "../../models/card";
 import { CardButton } from "./CardButton";
 
 export interface Props {
   cards: Card[];
   handleLastCard: () => void;
-  handleCancel: () => void;
 }
-export const CardStack: React.FC<Props> = ({
-  cards,
-  handleLastCard,
-  handleCancel
-}) => {
+export const CardStack: React.FC<Props> = ({ cards, handleLastCard }) => {
   const [currentCard, setCurrentCard] = useState(0);
 
   const handlePress = () => {
@@ -33,30 +28,5 @@ export const CardStack: React.FC<Props> = ({
     ) : null;
   };
 
-  return (
-    <View style={{ flex: 1 }}>
-      <TouchableOpacity
-        onPress={handleCancel}
-        style={{
-          height: 30,
-          margin: 10,
-          width: 60,
-          flexDirection: "row",
-          alignItems: "center"
-        }}
-      >
-        <Text>Cancel</Text>
-      </TouchableOpacity>
-      {displayCard()}
-    </View>
-  );
+  return <View style={{ flex: 1 }}>{displayCard()}</View>;
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center"
-//   }
-// });

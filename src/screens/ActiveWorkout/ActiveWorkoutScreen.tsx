@@ -1,41 +1,66 @@
-import React, { useContext, useEffect } from "react";
-import { Text, Button, View } from "react-native";
+import React, { useContext } from "react";
+import { Text, Button } from "react-native";
 import { NavProps } from "../../models/navigation";
 import { Screen } from "../../components/ui/Screen";
-// import { NavigationEvents } from "react-navigation";
-import { WorkoutContext } from "../../components/providers/WorkoutProvider";
+import { NavigationEvents } from "react-navigation";
+import { WorkoutContext } from "../../providers/WorkoutProvider";
 import { CardStack } from "../../components/ui/CardStack";
 
 export const ActiveWorkoutScreen: React.FC<NavProps> = ({ navigation }) => {
   const {
     activeWorkout,
     currentRep,
-    handleRepCompleted,
+    setCurrentRep,
+    setActiveWorkout,
     endWorkout,
     workoutList
   } = useContext(WorkoutContext);
 
-  useEffect(() => {
-    if (!activeWorkout) {
-      navigation.goBack();
-    }
-  }, [activeWorkout]);
+  const handleRepCompleted = () => {
+    setActiveWorkout(false);
+  };
+
+  const handleAnotherRep = () => {
+    setCurrentRep(currentRep + 1);
+    setActiveWorkout(true);
+  };
+
+  const handleEndWorkout = () => {
+    endWorkout();
+    navigation.goBack();
+  };
 
   return (
     <Screen>
-      <Button title="Finish Workout" onPress={() => endWorkout()} />
-      <View>
-        <Text>Current Rep: {currentRep}</Text>
-        {/* <Text>{elapsedTime}</Text> */}
-        <CardStack
-          cards={workoutList.map(wkout => ({
-            ...wkout,
-            subTitle: wkout.reps ? `Reps: ${wkout.reps}` : undefined
-          }))}
-          handleLastCard={handleRepCompleted}
-          handleCancel={() => endWorkout()}
-        />
-      </View>
+      <NavigationEvents
+        onWillBlur={() => {
+          if (activeWorkout) {
+            endWorkout();
+          }
+        }}
+      />
+      {activeWorkout ? (
+        <>
+          <Text>Current Rep: {currentRep}</Text>
+          <CardStack
+            cards={workoutList.map(wkout => ({
+              ...wkout,
+              subTitle: wkout.reps ? `Reps: ${wkout.reps}` : undefined
+            }))}
+            handleLastCard={handleRepCompleted}
+          />
+        </>
+      ) : (
+        <>
+          <Button
+            title={"Another Rep"}
+            onPress={() => {
+              handleAnotherRep();
+            }}
+          />
+          <Button title={"End Workout"} onPress={() => handleEndWorkout()} />
+        </>
+      )}
     </Screen>
   );
 };

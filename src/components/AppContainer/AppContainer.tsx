@@ -6,7 +6,7 @@ import { HomeScreen } from "../../screens/Home/HomeScreen";
 import { ActiveWorkoutScreen } from "../../screens/ActiveWorkout/ActiveWorkoutScreen";
 import { WorkoutSettingsScreen } from "../../screens/WorkoutSettings/WorkoutSettingsScreen";
 
-const AppNavigator = createStackNavigator(
+const AppStack = createStackNavigator(
   {
     [AppRoutes.HOME]: {
       screen: HomeScreen
@@ -34,4 +34,4 @@ const AppNavigator = createStackNavigator(
     initialRouteName: AppRoutes.HOME
   }
 );
-export const AppContainer = createAppContainer(AppNavigator);
+export const AppContainer = createAppContainer(AppStack);
