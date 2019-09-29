@@ -2,7 +2,6 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { AppRoutes } from "../../constants/routes";
 import { HomeScreen } from "../../screens/Home/HomeScreen";
-// import { NewWorkoutScreen } from "../../screens/NewWorkout/NewWorkoutScreen";
 import { ActiveWorkoutScreen } from "../../screens/ActiveWorkout/ActiveWorkoutScreen";
 import { WorkoutSettingsScreen } from "../../screens/WorkoutSettings/WorkoutSettingsScreen";
 
