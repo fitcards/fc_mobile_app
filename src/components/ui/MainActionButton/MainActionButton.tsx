@@ -24,7 +24,7 @@ interface Props {
 export const MainActionButton: React.FC<Props> = ({ children, onPress }) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={{ color: "white" }}>{children}</Text>
+      <Text style={{ color: "white", fontWeight: "bold" }}>{children}</Text>
     </TouchableOpacity>
   );
 };
