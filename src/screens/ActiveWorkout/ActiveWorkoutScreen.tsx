@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Text, Button } from "react-native";
+import { Text, Button, View } from "react-native";
 import { NavProps } from "../../models/navigation";
 import { Screen } from "../../components/ui/Screen";
 import { NavigationEvents } from "react-navigation";
@@ -13,7 +13,8 @@ export const ActiveWorkoutScreen: React.FC<NavProps> = ({ navigation }) => {
     setCurrentRep,
     setActiveWorkout,
     endWorkout,
-    workoutList
+    workoutList,
+    elapsedTime
   } = useContext(WorkoutContext);
 
   const handleRepCompleted = () => {
@@ -61,6 +62,9 @@ export const ActiveWorkoutScreen: React.FC<NavProps> = ({ navigation }) => {
           <Button title={"End Workout"} onPress={() => handleEndWorkout()} />
         </>
       )}
+      <View>
+        <Text>{elapsedTime}</Text>
+      </View>
     </Screen>
   );
 };
