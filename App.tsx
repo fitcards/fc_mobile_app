@@ -1,5 +1,5 @@
 import React from "react";
-import { AppContainer } from "./src";
+import { AppContainer } from "./src/components";
 import { AsyncStorage } from "react-native";
 import { WorkoutProvider } from "./src/components/providers/WorkoutProvider";
 
