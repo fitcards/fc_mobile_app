@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContainer } from "./src/components";
 import { AsyncStorage } from "react-native";
-import { WorkoutProvider } from "./src/components/providers/WorkoutProvider";
+import { WorkoutProvider } from "./src/providers/WorkoutProvider";
 
 // Persist nav state during development - https://reactnavigation.org/docs/en/state-persistence.html
 const persistenceKey = "persistenceKey";
